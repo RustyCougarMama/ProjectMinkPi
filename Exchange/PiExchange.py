@@ -10,9 +10,9 @@ channel = connection.channel()
 # Establish the exchange
 channel.exchange_declare(exchange='sensor_exchange', exchange_type='topic')
 
-# Establish a queue called 'temp'
-# TODO Change the exclusive based on whether or not we want the queues to be persistant.
-result = channel.queue_declare(queue='', exclusive=False)
+# Establish a queue called
+queue_name = sys.argv[1]
+result = channel.queue_declare(queue=queue_name, exclusive=False)
 queue_name = result.method.queue
 
 binding_keys = sys.argv[1:]
@@ -26,4 +26,4 @@ for binding_key in binding_keys:
     channel.queue_bind(
         exchange='sensor_exchange', queue=queue_name, routing_key=binding_key)
 
-print(' [*] PiExchange is waiting for messages. To exit press CTRL + C...')
+print(' [*] PiExchange is now running...')
