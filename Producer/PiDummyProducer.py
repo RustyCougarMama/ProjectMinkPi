@@ -1,4 +1,7 @@
 import sys
+import random
+from time import sleep
+
 import pika
 
 # Set up the exchange environment
@@ -10,12 +13,17 @@ channel = connection.channel()
 # Establish the exchange
 channel.exchange_declare(exchange='sensor_exchange', exchange_type='topic')
 
-routing_key = sys.argv[1] if len(sys.argv) > 2 else 'anonymous.info'
-message = ' '.join(sys.argv[2:]) or 'Empty message'
-channel.basic_publish(exchange='sensor_exchange',
-                      routing_key=routing_key,
-                      body=message)
+routing_key = sys.argv[1]
+while True:
+    sleep(1)
+    temp = str(random.randrange(10, 40))
+    temp = temp + "C"
 
-print(" [X] Sent %r:%r" % (routing_key, message))
+    message = temp
+    channel.basic_publish(exchange='sensor_exchange',
+                        routing_key=routing_key,
+                        body=message)
+
+    print(" [X] Sent %r:%r" % (routing_key, message))
 
 connection.close()
