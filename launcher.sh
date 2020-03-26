@@ -4,5 +4,6 @@
 
 cd /
 cd /home/pi/Documents/ProjectMinkPi #where the script is
-sudo python PiStartupScript.py #a commnad to run the script
+sudo echo PiStartupScript.py is being started...
+sudo -u pi python PiStartupScript.py #a commnad to run the script
 cd /
