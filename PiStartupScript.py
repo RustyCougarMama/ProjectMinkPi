@@ -1,5 +1,7 @@
 import os
+import time
 
+time.sleep(15)
 dir = os.path.dirname(os.path.abspath(__file__))
 print(dir)
 dir = dir.replace('\\', '/')
