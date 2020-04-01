@@ -24,6 +24,6 @@ while True:
                         routing_key=routing_key,
                         body=message)
 
-    print(" [X] Sent %r:%r" % (routing_key, message))
+    #print(" [X] Sent %r:%r" % (routing_key, message))
 
 connection.close()
