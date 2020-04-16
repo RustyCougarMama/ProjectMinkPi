@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d7c9f918-87d2-4cc4-8408-c90dc3ac0a96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AzureTesting/BackEndApplication.py" beforeDir="false" afterPath="$PROJECT_DIR$/AzureTesting/BackEndApplication.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AzureTesting/SimulatedDevice.py" beforeDir="false" afterPath="$PROJECT_DIR$/AzureTesting/SimulatedDevice.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,7 +94,7 @@
       <workItem from="1586077738079" duration="280000" />
       <workItem from="1586863912092" duration="803000" />
       <workItem from="1586945668930" duration="17000" />
-      <workItem from="1587032380697" duration="415000" />
+      <workItem from="1587032380697" duration="997000" />
     </task>
     <servers />
   </component>

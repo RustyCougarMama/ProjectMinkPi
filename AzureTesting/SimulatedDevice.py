@@ -18,7 +18,7 @@ CONNECTION_STRING = "HostName=ProjectMinkIoTHub.azure-devices.net;DeviceId=MyPyt
 # Define the JSON message to send to IoT Hub.
 TEMPERATURE = 20.0
 HUMIDITY = 60
-MSG_TXT = '{{"temperature": {temperature},"humidity": {humidity},"time": {temperature}}}'
+MSG_TXT = '{{"temperature": {temperature},"humidity": {humidity},"time": {time}}}'
 
 def iothub_client_init():
     # Create an IoT Hub client
@@ -35,7 +35,7 @@ def iothub_client_telemetry_sample_run():
             # Build the message with simulated telemetry values.
             temperature = TEMPERATURE + (random.random() * 15)
             humidity = HUMIDITY + (random.random() * 20)
-            TIME = now = datetime.now()
+            TIME = datetime.now()
             now = TIME.strftime("%H:%M:%S")
             msg_txt_formatted = MSG_TXT.format(temperature=temperature, humidity=humidity, time=now)
             message = Message(msg_txt_formatted)
