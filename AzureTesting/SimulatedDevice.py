@@ -35,8 +35,10 @@ def iothub_client_telemetry_sample_run():
             # Build the message with simulated telemetry values.
             temperature = TEMPERATURE + (random.random() * 15)
             humidity = HUMIDITY + (random.random() * 20)
-            TIME = datetime.now()
-            msg_txt_formatted = MSG_TXT.format(temperature=temperature, humidity=humidity, nowTime=TIME)
+            nowdatetime = datetime.now()
+            nowTime = str(nowdatetime.strftime('%H:%M:%S'))
+            nowTime = '"' + nowTime + '"'
+            msg_txt_formatted = MSG_TXT.format(temperature=temperature, humidity=humidity, nowTime=nowTime)
             message = Message(msg_txt_formatted)
 
             # Add a custom application property to the message.
