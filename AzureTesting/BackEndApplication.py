@@ -10,7 +10,7 @@ import sys
 from azure.iot.hub import IoTHubRegistryManager
 from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult
 
-from builtins import input
+# from builtins import input
 
 # The service connection string to authenticate with your IoT hub.
 # Using the Azure CLI:
