@@ -30,7 +30,7 @@ def iothub_client_telemetry_sample_run():
         client = iothub_client_init()
         print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
 
-        while True:
+        while bool(client):
             # Build the message with simulated telemetry values.
             temperature = TEMPERATURE + (random.random() * 15)
             humidity = HUMIDITY + (random.random() * 20)
