@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7c9f918-87d2-4cc4-8408-c90dc3ac0a96" name="Default Changelist" comment="" />
+    <list default="true" id="d7c9f918-87d2-4cc4-8408-c90dc3ac0a96" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AzureTesting/SimulatedDevice.py" beforeDir="false" afterPath="$PROJECT_DIR$/AzureTesting/SimulatedDevice.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +95,8 @@
       <workItem from="1586863912092" duration="803000" />
       <workItem from="1586945668930" duration="17000" />
       <workItem from="1587032380697" duration="6866000" />
+      <workItem from="1587454824076" duration="732000" />
+      <workItem from="1587542037179" duration="4814000" />
     </task>
     <servers />
   </component>
@@ -122,6 +127,6 @@
     <state x="976" y="524" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.232.1920.1040@0.0.2560.1400" timestamp="1585040600509" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProjectMinkPi$PiExchange.coverage" NAME="PiExchange Coverage Results" MODIFIED="1585041182403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exchange" />
+    <SUITE FILE_PATH="coverage/ProjectMinkPi$PiExchange.coverage" NAME="PiExchange Coverage Results" MODIFIED="1587554469818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exchange" />
   </component>
 </project>
