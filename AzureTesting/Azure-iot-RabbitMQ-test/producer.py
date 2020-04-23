@@ -23,7 +23,7 @@ while True:
     temperature = TEMPERATURE + (random.random() * 15)
     humidity = HUMIDITY + (random.random() * 20)
     nowdatetime = datetime.now()
-    nowTime = str(nowdatetime.strftime('%H:%M:%S'))
+    nowTime = str(nowdatetime.strftime('%d/%m/%y - %H:%M:%S'))
     nowTime = '"' + nowTime + '"'
     msg_txt_formatted = MSG_TXT.format(temperature=temperature, humidity=humidity, nowTime=nowTime)
     message = msg_txt_formatted
