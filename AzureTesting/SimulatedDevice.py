@@ -12,12 +12,11 @@ from azure.iot.device import IoTHubDeviceClient, Message
 # The device connection string to authenticate the device with your IoT hub.
 # Using the Azure CLI:
 # az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
-CONNECTION_STRING = "HostName=PiIoTTest.azure-devices.net;DeviceId=MyPi;SharedAccessKey=6eNN9OI8awOhNupnqlgtjmiDC0DOisMmhZi6B4NsonA="
+CONNECTION_STRING = "HostName=ProjectMinkIoTHub.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey=G/4FSzB4gkbbH7kXQiiyk43pJfG0/GZ8lt1+zheq6b0="
 
 # Define the JSON message to send to IoT Hub.
 TEMPERATURE = 20.0
 HUMIDITY = 60
-
 MSG_TXT = '{{"temperature": {temperature},"humidity": {humidity}}}'
 
 def iothub_client_init():
@@ -30,8 +29,7 @@ def iothub_client_telemetry_sample_run():
     try:
         client = iothub_client_init()
         print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
-        
-        
+
         while bool(client):
             # Build the message with simulated telemetry values.
             temperature = TEMPERATURE + (random.random() * 15)

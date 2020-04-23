@@ -2,9 +2,7 @@ import sys
 import pika
 
 # Set up the exchange environment
-credentials = pika.PlainCredentials('StevenTeglman', 'group13')
-parameters = pika.ConnectionParameters('192.168.1.6', credentials=credentials)
-connection = pika.BlockingConnection(parameters)
+connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
 
 # Establish the exchange
