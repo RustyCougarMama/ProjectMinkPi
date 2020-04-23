@@ -3,6 +3,7 @@
 
 import random
 import time
+from datetime import datetime
 
 # Using the Python Device SDK for IoT Hub:
 #   https://github.com/Azure/azure-iot-sdk-python
@@ -17,7 +18,7 @@ CONNECTION_STRING = "HostName=ProjectMinkIoTHub.azure-devices.net;DeviceId=MyPyt
 # Define the JSON message to send to IoT Hub.
 TEMPERATURE = 20.0
 HUMIDITY = 60
-MSG_TXT = '{{"temperature": {temperature},"humidity": {humidity}}}'
+MSG_TXT = '{{"temperature": {temperature},"humidity": {humidity},"nowTime": {nowTime}}}'
 
 def iothub_client_init():
     # Create an IoT Hub client
@@ -34,7 +35,10 @@ def iothub_client_telemetry_sample_run():
             # Build the message with simulated telemetry values.
             temperature = TEMPERATURE + (random.random() * 15)
             humidity = HUMIDITY + (random.random() * 20)
-            msg_txt_formatted = MSG_TXT.format(temperature=temperature, humidity=humidity)
+            nowdatetime = datetime.now()
+            nowTime = str(nowdatetime.strftime('%d/%m/%y - %H:%M:%S'))
+            nowTime = '"' + nowTime + '"'
+            msg_txt_formatted = MSG_TXT.format(temperature=temperature, humidity=humidity, nowTime=nowTime)
             message = Message(msg_txt_formatted)
 
             # Add a custom application property to the message.
