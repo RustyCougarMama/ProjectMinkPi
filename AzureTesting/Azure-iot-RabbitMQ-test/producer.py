@@ -12,7 +12,6 @@ channel = connection.channel()
 # Define the JSON message to send to IoT Hub.
 TEMPERATURE = 20.0
 HUMIDITY = 60
-
 MSG_TXT = '{{"temperature": {temperature},"humidity": {humidity}, "nowTime": {nowTime}}}'
 message = ""
 # Establish the exchange
