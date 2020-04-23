@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7c9f918-87d2-4cc4-8408-c90dc3ac0a96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AzureTesting/Azure-iot-RabbitMQ-test/consumer-to-azure.py" beforeDir="false" afterPath="$PROJECT_DIR$/AzureTesting/Azure-iot-RabbitMQ-test/consumer-to-azure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AzureTesting/Azure-iot-RabbitMQ-test/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/AzureTesting/Azure-iot-RabbitMQ-test/producer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +96,7 @@
       <workItem from="1587032380697" duration="6866000" />
       <workItem from="1587454824076" duration="732000" />
       <workItem from="1587542037179" duration="5445000" />
-      <workItem from="1587628651063" duration="757000" />
+      <workItem from="1587628651063" duration="971000" />
     </task>
     <servers />
   </component>
