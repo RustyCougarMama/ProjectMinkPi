@@ -24,7 +24,7 @@ Now it should be sending random data every second. Enjoy!
 
 For the link to the tutorial click [here](https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/)
 
-Method 1 is the one we are using, and it seems to work the best. The only thing is that you need to run your Raspberry Pi in Console Mode, and not Desktop Mode. 
+Method 1 is the one we are using, and it seems to work the best. Follow the steps of the tutorial, and then type the `sudo python [INSERT FILE PATH] &` for the paths of each of the three Python scripts listed above in the "Starting the program manually for testing purposes" section. The only thing is that you need to run your Raspberry Pi in Console Mode, and not Desktop Mode. 
 
 To change your RaspberryPi to start up in Console Mode, type in the following:
 
