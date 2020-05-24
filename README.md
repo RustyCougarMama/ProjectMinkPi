@@ -11,7 +11,7 @@ python exchange.py sensorData
 
 2. Next you'll want to start the consumer which is named `consumer-to-azure.py`. You also have to specify which Azure IoT hub you will be sending the information to. Currently there are only two option; if you type `2` as an argument it will go to Christian's Azure. If you type anything else or leave it blank it will go to Steven's Azure, which at the time of writing this is currently hooked up to all the other systems such as the SQL database and Power Bi. So yeah, start the script:
 ```
-python consumer-to-azure.py
+python consumer-to-azure.py 1
 ```
 
 3. And then finally, you just need to start the simulated data flow. This is done by starting the `producer.py` script. You can cancel it at any time once it's start by pressing `ctrl+c` on your keyboard. So to start the producer, type in the following:
