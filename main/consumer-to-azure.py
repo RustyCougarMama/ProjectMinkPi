@@ -4,16 +4,7 @@ from azure.iot.device import IoTHubDeviceClient, Message
 
 # Selects the IoT Hub based on user selection
 # Student IoT Hub
-CONNECTION_STRING = "HostName=minkiothubs.azure-devices.net;DeviceId=IotDevice;SharedAccessKey=iWQGotDR3dzTN88avnrQy6/UNlyH6vox1zN46Lsf4LU="
-choice = '1'
-if len(sys.argv) >= 1:
-    choice = sys.argv[1]
-    # Steven's IoT Hub
-    if choice is '2':
-        CONNECTION_STRING = "HostName=ProjectMinkIoTHub.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey=G/4FSzB4gkbbH7kXQiiyk43pJfG0/GZ8lt1+zheq6b0="
-    # Christian's IoT Hub
-    if choice is '3':
-        CONNECTION_STRING = "HostName=PiIoTTest.azure-devices.net;DeviceId=MyPi;SharedAccessKey=6eNN9OI8awOhNupnqlgtjmiDC0DOisMmhZi6B4NsonA="
+CONNECTION_STRING = "HostName=ThyrrestrupIoThub.azure-devices.net;DeviceId=ThyrrestrupDevice;SharedAccessKey=lSo6zGlpw18ClPoOND9ESskrM91bXvkWIeUvBvpkiX8="
 
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
