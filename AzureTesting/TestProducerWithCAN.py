@@ -60,7 +60,7 @@ def id304(data):
 can_interface = 'can0'
 bus = can.interface.Bus(can_interface, bustype='socketcan')
 while True:
-    message = bus.recv(4.0)  # Timeout in seconds.
+    message = bus.recv(40.0)  # Timeout in seconds.
     
     #uncomment this to see the whole can message
     print(message)

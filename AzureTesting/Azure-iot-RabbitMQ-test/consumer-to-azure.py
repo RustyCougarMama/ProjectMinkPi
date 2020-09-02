@@ -1,12 +1,7 @@
 import pika
-import sys
 from azure.iot.device import IoTHubDeviceClient, Message
 
 CONNECTION_STRING = "HostName=PiIoTTest.azure-devices.net;DeviceId=MyPi;SharedAccessKey=6eNN9OI8awOhNupnqlgtjmiDC0DOisMmhZi6B4NsonA="
-choice = '2'
-choice = sys.argv[1]
-if choice is '1':
-    CONNECTION_STRING = "HostName=ProjectMinkIoTHub.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey=G/4FSzB4gkbbH7kXQiiyk43pJfG0/GZ8lt1+zheq6b0="
 
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
