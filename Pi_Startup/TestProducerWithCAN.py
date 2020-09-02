@@ -1,3 +1,4 @@
+
 import sys
 import pika
 import time
@@ -63,7 +64,7 @@ while True:
     message = bus.recv(40.0)  # Timeout in seconds.
     
     #uncomment this to see the whole can message
-    print(message)
+    #print(message)
     #messageData = (str(bytearray(message.data).hex()))
     #print(messageData)
     
@@ -88,7 +89,7 @@ while True:
                           routing_key='sensorData',
                           body=Rabbitmessage)
 
-print(" [X] Sent %r:%r" % (routing_key, Rabbitmessage))
+#print(" [X] Sent %r:%r" % (routing_key, Rabbitmessage))
 
 connection.close()
 

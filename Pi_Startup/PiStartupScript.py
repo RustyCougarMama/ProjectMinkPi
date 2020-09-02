@@ -11,7 +11,8 @@ os.system("sudo ip link set can0 up type can bitrate 500000")
 #os.system("python Home/pi/ProjectMinkPi/main/consumer-to-azure.py" %dir)
 #os.system("python3 /Home/pi/ProjectMinkPi/AzureTesting/TestProducerWithCAN.py" %dir)
 os.system("python exchange.py sensorData")
-os.system("python consumer-to-azure.py" %dir)
-os.system("python3 TestProducerWithCAN.py" %dir)
 
+os.system("python consumer-to-azure.py & python3 TestProducerWithCAN.py")
+
+#os.system("python3 TestProducerWithCAN.py")
 exit(0)
