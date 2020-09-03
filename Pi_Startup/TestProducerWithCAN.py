@@ -9,6 +9,9 @@ import can
 motorTemp=20
 hydraulicTemp=20
 
+# Set the delay time
+delaytime=10
+
 # Set up the exchange environment
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
@@ -67,7 +70,7 @@ while True:
     #print(message)
     #messageData = (str(bytearray(message.data).hex()))
     #print(messageData)
-    
+
     if message.arbitration_id==300: 
         id300(message.data)
     elif message.arbitration_id==301:
@@ -84,6 +87,9 @@ while True:
     nowTime = '"' + nowTime + '"'
     msg_txt_formatted = MSG_TXT.format(motorTemp=motorTemp, hydraulicTemp=hydraulicTemp, nowTime=nowTime)
     Rabbitmessage = msg_txt_formatted
+
+    #Variable delay here
+    time.sleep(delaytime)
     
     channel.basic_publish(exchange='sensor_exchange',
                           routing_key='sensorData',
