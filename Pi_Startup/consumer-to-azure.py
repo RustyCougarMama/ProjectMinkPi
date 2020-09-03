@@ -45,5 +45,6 @@ channel.basic_consume(queue=queue_name,
                       on_message_callback=callback,
                       auto_ack=True)
 
+#Printing the whole statement to troubleshoot
 print(' [*] PiTestConsumer is waiting for messages. To exit press CTRL + C...')
 channel.start_consuming()
