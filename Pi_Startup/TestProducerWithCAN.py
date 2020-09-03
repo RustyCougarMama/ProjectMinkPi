@@ -95,7 +95,7 @@ while True:
                           routing_key='sensorData',
                           body=Rabbitmessage)
 
-#print(" [X] Sent %r:%r" % (routing_key, Rabbitmessage))
+print(" [X] Sent %r:%r" % (routing_key, Rabbitmessage))
 
 connection.close()
 
