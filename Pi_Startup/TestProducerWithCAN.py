@@ -60,12 +60,12 @@ def id303(data):
 def id304(data):
     data = str(bytearray(data).hex())
     
-
+#defining CAN bus
 can_interface = 'can0'
 bus = can.interface.Bus(can_interface, bustype='socketcan')
 while True:
     message = bus.recv(40.0)  # Timeout in seconds.
-    
+
     #uncomment this to see the whole can message
     #print(message)
     #messageData = (str(bytearray(message.data).hex()))

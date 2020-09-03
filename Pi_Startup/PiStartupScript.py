@@ -10,8 +10,11 @@ os.system("sudo ip link set can0 up type can bitrate 500000")
 #os.system("python Home/pi/ProjectMinkPi/main/exchange.py sensorData" %dir)
 #os.system("python Home/pi/ProjectMinkPi/main/consumer-to-azure.py" %dir)
 #os.system("python3 /Home/pi/ProjectMinkPi/AzureTesting/TestProducerWithCAN.py" %dir)
-os.system("python exchange.py sensorData")
 
+#Starting the exchange to start RabbitMQ
+os.system("python exchange.py")
+
+#Starting both the CAN script and the consumer that sends the data from RabbitMQ to Azure IoTHub
 os.system("python consumer-to-azure.py & python3 TestProducerWithCAN.py")
 
 #os.system("python3 TestProducerWithCAN.py")

@@ -9,7 +9,7 @@ channel = connection.channel()
 channel.exchange_declare(exchange='sensor_exchange', exchange_type='topic')
 
 # Establish a queue called
-queue_name = sys.argv[1]
+queue_name = "sensorData"
 result = channel.queue_declare(queue=queue_name, exclusive=False)
 queue_name = result.method.queue
 
