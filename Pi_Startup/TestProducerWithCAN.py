@@ -32,13 +32,13 @@ def id300(data):
     value1 = int(data1,0)
     #print('Feed level: ' + str(value1))
     data4 = "0x" + data[12:14]
-    hydraulicTemp = int(data4, 0)
+    global hydraulicTemp = int(data4, 0)
     #print('Hydraulic temp: ' + str(value4))
 
 def id301(data):
     data = str(bytearray(data).hex())
     data1 = "0x" + data[0:2]
-    motorTemp = int(data1, 0)
+    global motorTemp = int(data1, 0)
     #print('Motor temp: ' + str(value1))
     data2 = "0x" + data[2:4]
     value2 = int(data2, 0)
