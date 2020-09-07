@@ -6,18 +6,11 @@ from datetime import datetime
 #import can
 
 #Different atributes from the CAN bus
-motorTemp=20
-hydraulicTemp=20
+motorTemp = 20
+hydraulicTemp = 20
 
 # Set the delay time
-delaytime=10
-
-# Checking for changes in different nodes
-col300=False
-col301=False
-col302=False
-col303=False
-col304=False
+delaytime = 10
 
 # Set up the exchange environment
 
@@ -73,44 +66,38 @@ def id304(data):
     data = str(bytearray(data).hex())
 
 
-def ReadCANData():
-    print(col300)
-    if col300 == False | col301 == False | col302 == False | col303 ==False | col304 == False:
-        message = bus.recv(1.0) #timeout in seconds
-    if message.arbitration_id==300:
-        id300(message.data)
-        global col300
-        col300=True
-    elif message.arbitration_id==301:
-        id301(message.data)
-        global col301
-        col301 = True
-    elif message.arbitration_id==302:
-        id302(message.data)
-        global col302
-        col302 = True
-    elif message.arbitration_id==303:
-        id303(message.data)
-        global col303
-        col303 = True
-    elif message.arbitration_id==304:
-        id304(message.data)
-        global col304
-        col304 = True
+def ReadCANData(col300, col301, col302, col303, col304):
+    messageID0 = col300
+    messageID1 = col301
+    messageID2 = col302
+    messageID3 = col303
+    messageID4 = col304
+    while messageID0 == False | messageID1 == False | messageID2 == False | messageID3 == False | messageID4 == False:
+        message = bus.recv(1.0)  # timeout in seconds
+        if message.arbitration_id == 300:
+            id300(message.data)
+            messageID0 = True
+        elif message.arbitration_id == 301:
+            id301(message.data)
+            messageID1 = True
+        elif message.arbitration_id == 302:
+            id302(message.data)
+            messageID2 = True
+        elif message.arbitration_id == 303:
+            id303(message.data)
+            messageID3 = True
+        elif message.arbitration_id == 304:
+            id304(message.data)
+            messageID4 = True
 
 while True:
     time.sleep(delaytime)
-    global col300
     col300 = False
-    global col301
     col301 = False
-    global col302
     col302 = False
-    global col303
     col303 = False
-    global col304
     col304 = False
-    ReadCANData()
+    ReadCANData(col300, col301, col302, col303, col304)
 
 
     nowdatetime = datetime.now()
