@@ -31,8 +31,8 @@ def callback(ch, method, properties, body):
         unsent = True
         while bool(unsent):
             if bool(client):
-                client.send_message(message)
-                print("Sending message: {}".format(message))
+                client.send_message(body)
+                print("Sending message: {}".format(body))
                 unsent = False
             else:
                 client = iothub_client_init()

@@ -10,7 +10,14 @@ motorTemp=20
 hydraulicTemp=20
 
 # Set the delay time
-delaytime=10
+delaytime=1
+
+# Checking for changes in different nodes
+col300=False
+col301=False
+col302=False
+col303=False
+col304=False
 
 # Set up the exchange environment
 
@@ -66,8 +73,8 @@ def id304(data):
 can_interface = 'can0'
 bus = can.interface.Bus(can_interface, bustype='socketcan')
 while True:
-    message = bus.recv(40.0)  # Timeout in seconds.
-
+    message = bus.recv(1.0)  # Timeout in seconds.
+    
     #uncomment this to see the whole can message
     #print(message)
     #messageData = (str(bytearray(message.data).hex()))
@@ -75,29 +82,35 @@ while True:
 
     if message.arbitration_id==300: 
         id300(message.data)
+        print("change to col300")
     elif message.arbitration_id==301:
         id301(message.data)
+        print("change to col301")
     elif message.arbitration_id==302:
         id302(message.data)
+        print("change to col302")
     elif message.arbitration_id==303:
         id303(message.data)
+        print("change to col303")
     elif message.arbitration_id==304:
         id304(message.data)
+        print("change to col304")
 
-    nowdatetime = datetime.now()
-    nowTime = str(nowdatetime.strftime('%d/%m/%y - %H:%M:%S'))
-    nowTime = '"' + nowTime + '"'
-    msg_txt_formatted = MSG_TXT.format(motorTemp=motorTemp, hydraulicTemp=hydraulicTemp, nowTime=nowTime)
-    Rabbitmessage = msg_txt_formatted
+    if col300==False & col301==False:
+        nowdatetime = datetime.now()
+        nowTime = str(nowdatetime.strftime('%d/%m/%y - %H:%M:%S'))
+        nowTime = '"' + nowTime + '"'
+        msg_txt_formatted = MSG_TXT.format(motorTemp=motorTemp, hydraulicTemp=hydraulicTemp, nowTime=nowTime)
+        Rabbitmessage = msg_txt_formatted
 
     #Variable delay here
-    time.sleep(delaytime)
+    #time.sleep(delaytime)
     
-    channel.basic_publish(exchange='sensor_exchange',
-                          routing_key='sensorData',
-                          body=Rabbitmessage)
+        channel.basic_publish(exchange='sensor_exchange',
+                              routing_key='sensorData',
+                              body=Rabbitmessage)
 
-#print(" [X] Sent %r:%r" % (routing_key, Rabbitmessage))
+print(" [X] Sent %r:%r" % (routing_key, Rabbitmessage))
 
 connection.close()
 

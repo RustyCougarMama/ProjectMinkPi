@@ -15,7 +15,7 @@ os.system("sudo ip link set can0 up type can bitrate 500000")
 os.system("python exchange.py sensorData")
 
 #Starting both the CAN script and the consumer that sends the data from RabbitMQ to Azure IoTHub
-os.system("python consumer-to-azure.py & python3 TestProducerWithCAN.py")
+os.system("python consumer-to-azure.py & python3 CANreader.py")
 
 #os.system("python3 TestProducerWithCAN.py")
 exit(0)
