@@ -3,7 +3,7 @@ import sys
 import pika
 import time
 from datetime import datetime
-#import can
+import can
 
 #Different atributes from the CAN bus
 motorTemp = 20
