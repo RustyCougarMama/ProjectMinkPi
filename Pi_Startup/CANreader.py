@@ -73,25 +73,26 @@ def ReadCANData(col300, col301, col302, col303, col304):
     messageID3 = col303
     messageID4 = col304
     while messageID0 == False | messageID1 == False | messageID2 == False | messageID3 == False | messageID4 == False:
+        print(1)
         message = bus.recv(1.0)  # timeout in seconds
-        if message.arbitration_id == 300:
+        if message.arbitration_id == 300 and messageID0 == False:
             id300(message.data)
             messageID0 = True
-        elif message.arbitration_id == 301:
+        elif message.arbitration_id == 301 and messageID0 == False:
             id301(message.data)
             messageID1 = True
-        elif message.arbitration_id == 302:
+        elif message.arbitration_id == 302 and messageID0 == False:
             id302(message.data)
             messageID2 = True
-        elif message.arbitration_id == 303:
+        elif message.arbitration_id == 303 and messageID0 == False:
             id303(message.data)
             messageID3 = True
-        elif message.arbitration_id == 304:
+        elif message.arbitration_id == 304 and messageID0 == False:
             id304(message.data)
             messageID4 = True
 
 while True:
-    time.sleep(delaytime)
+
     col300 = False
     col301 = False
     col302 = False
