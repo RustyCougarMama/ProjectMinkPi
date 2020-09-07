@@ -34,7 +34,7 @@ def id300(data):
     data4 = "0x" + data[12:14]
     global hydraulicTemp
     hydraulicTemp = int(data4, 0)
-    # print('Hydraulic temp: ' + str(value4))
+    #print('Hydraulic temp: ' + str(hydraulicTemp))
 
 
 def id301(data):
@@ -73,7 +73,6 @@ def ReadCANData(col300, col301, col302, col303, col304):
     messageID3 = col303
     messageID4 = col304
     while messageID0 == False | messageID1 == False | messageID2 == False | messageID3 == False | messageID4 == False:
-        print(1)
         message = bus.recv(1.0)  # timeout in seconds
         if message.arbitration_id == 300 and messageID0 == False:
             id300(message.data)
@@ -107,13 +106,8 @@ while True:
     msg_txt_formatted = MSG_TXT.format(motorTemp=motorTemp, hydraulicTemp=hydraulicTemp, nowTime=nowTime)
     Rabbitmessage = msg_txt_formatted
 
-    # Variable delay here
+    #channel.basic_publish(exchange='sensor_exchange',routing_key='sensorData',body=Rabbitmessage)
     time.sleep(delaytime)
-
-    channel.basic_publish(exchange='sensor_exchange',
-                          routing_key='sensorData',
-                          body=Rabbitmessage)
-
 # print(" [X] Sent %r:%r" % (routing_key, Rabbitmessage))
 
 connection.close()
