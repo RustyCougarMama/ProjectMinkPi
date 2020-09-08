@@ -10,7 +10,7 @@ motorTemp = 20
 hydraulicTemp = 20
 
 # Set the delay time
-delaytime = 10
+delaytime = 1
 
 # Set up the exchange environment
 
@@ -34,7 +34,7 @@ def id300(data):
     data4 = "0x" + data[12:14]
     global hydraulicTemp
     hydraulicTemp = int(data4, 0)
-    #print('Hydraulic temp: ' + str(hydraulicTemp))
+    print('Hydraulic temp: ' + str(hydraulicTemp))
 
 
 def id301(data):
@@ -42,7 +42,7 @@ def id301(data):
     data1 = "0x" + data[0:2]
     global motorTemp
     motorTemp = int(data1, 0)
-    # print('Motor temp: ' + str(value1))
+    print('Motor temp: ' + str(motorTemp))
     data2 = "0x" + data[2:4]
     value2 = int(data2, 0)
     # print('Motor RPM: ' + str(value2))
@@ -72,26 +72,30 @@ def ReadCANData(col300, col301, col302, col303, col304):
     messageID2 = col302
     messageID3 = col303
     messageID4 = col304
-    while messageID0 == False | messageID1 == False | messageID2 == False | messageID3 == False | messageID4 == False:
+    while messageID0 == False or messageID1 == False or messageID2 == False or messageID3 == False or messageID4 == False:
         message = bus.recv(1.0)  # timeout in seconds
+
         if message.arbitration_id == 300 and messageID0 == False:
             id300(message.data)
             messageID0 = True
-        elif message.arbitration_id == 301 and messageID0 == False:
+            
+        elif message.arbitration_id == 301 and messageID1 == False:
             id301(message.data)
             messageID1 = True
-        elif message.arbitration_id == 302 and messageID0 == False:
+            
+        elif message.arbitration_id == 302 and messageID2 == False:
             id302(message.data)
             messageID2 = True
-        elif message.arbitration_id == 303 and messageID0 == False:
+            
+        elif message.arbitration_id == 303 and messageID3 == False:
             id303(message.data)
             messageID3 = True
-        elif message.arbitration_id == 304 and messageID0 == False:
+            
+        elif message.arbitration_id == 304 and messageID4 == False:
             id304(message.data)
             messageID4 = True
 
 while True:
-
     col300 = False
     col301 = False
     col302 = False
@@ -107,7 +111,7 @@ while True:
     Rabbitmessage = msg_txt_formatted
 
     #channel.basic_publish(exchange='sensor_exchange',routing_key='sensorData',body=Rabbitmessage)
-    time.sleep(delaytime)
-# print(" [X] Sent %r:%r" % (routing_key, Rabbitmessage))
+    #time.sleep(delaytime)
+    #print(" [X] Sent %r:%r" % (Rabbitmessage))
 
 connection.close()
