@@ -110,8 +110,8 @@ while True:
     msg_txt_formatted = MSG_TXT.format(motorTemp=motorTemp, hydraulicTemp=hydraulicTemp, nowTime=nowTime)
     Rabbitmessage = msg_txt_formatted
 
-    #channel.basic_publish(exchange='sensor_exchange',routing_key='sensorData',body=Rabbitmessage)
-    #time.sleep(delaytime)
+    channel.basic_publish(exchange='sensor_exchange',routing_key='sensorData',body=Rabbitmessage)
+    time.sleep(delaytime)
     #print(" [X] Sent %r:%r" % (Rabbitmessage))
 
 connection.close()
