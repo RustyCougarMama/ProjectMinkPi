@@ -41,9 +41,7 @@ def callback(ch, method, properties, body):
 
 
 queue_name = 'sensorData'
-channel.basic_consume(queue=queue_name,
-                      on_message_callback=callback,
-                      auto_ack=True)
+channel.basic_consume(queue=queue_name,on_message_callback=callback,auto_ack=True)
 
 #Printing the whole statement to troubleshoot
 print(' [*] PiTestConsumer is waiting for messages. To exit press CTRL + C...')

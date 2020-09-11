@@ -8,6 +8,9 @@ import can
 #Different atributes from the CAN bus
 motorTemp = 20
 hydraulicTemp = 20
+fuelLevel=100
+hydraulicPressure=10
+motorRPM=10
 
 # Set the delay time
 delaytime = 1
@@ -18,7 +21,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
 
 # Define the JSON message to send to IoT Hub.
-MSG_TXT = '{{"motorTemp": {motorTemp},"hydraulicTemp": {hydraulicTemp}, "nowTime": {nowTime}}}'
+MSG_TXT = '{{"motorTemp": {motorTemp},"hydraulicTemp": {hydraulicTemp},"fuelLevel":{fuelLevel},"hydraulicPressure":{hydraulicPressure}, "nowTime": {nowTime}}}'
 Rabbitmessage = ""
 # Establish the exchange
 channel.exchange_declare(exchange='sensor_exchange', exchange_type='topic')
@@ -28,13 +31,17 @@ bus = can.interface.Bus(can_interface, bustype='socketcan')
 
 def id300(data):
     data = str(bytearray(data).hex())
-    data1 = "0x" + data[0:2]
+    data1 = "0x" + data[4:6]
     value1 = int(data1, 0)
-    # print('Feed level: ' + str(value1))
+    # print('Fuel level: ' + str(value1))
+    data1 = "0x" + data[8:10]
+    global hydraulicPressure
+    hydraulicPressure = int(data1, 0)
+    # print('Fuel level: ' + str(hydraulicPressure))
     data4 = "0x" + data[12:14]
     global hydraulicTemp
     hydraulicTemp = int(data4, 0)
-    print('Hydraulic temp: ' + str(hydraulicTemp))
+    #print('Hydraulic temp: ' + str(hydraulicTemp))
 
 
 def id301(data):
@@ -42,10 +49,11 @@ def id301(data):
     data1 = "0x" + data[0:2]
     global motorTemp
     motorTemp = int(data1, 0)
-    print('Motor temp: ' + str(motorTemp))
+    #print('Motor temp: ' + str(motorTemp))
     data2 = "0x" + data[2:4]
-    value2 = int(data2, 0)
-    # print('Motor RPM: ' + str(value2))
+    global motorRPM
+    motorRPM = int(data2, 0)
+    # print('Motor RPM: ' + str(motorRPM))
 
 
 def id302(data):
@@ -107,7 +115,7 @@ while True:
     nowdatetime = datetime.now()
     nowTime = str(nowdatetime.strftime('%d/%m/%y - %H:%M:%S'))
     nowTime = '"' + nowTime + '"'
-    msg_txt_formatted = MSG_TXT.format(motorTemp=motorTemp, hydraulicTemp=hydraulicTemp, nowTime=nowTime)
+    msg_txt_formatted = MSG_TXT.format(motorTemp=motorTemp, hydraulicTemp=hydraulicTemp, fuelLevel=fuelLevel, hydraulicPressure=hydraulicPressure, nowTime=nowTime)
     Rabbitmessage = msg_txt_formatted
 
     channel.basic_publish(exchange='sensor_exchange',routing_key='sensorData',body=Rabbitmessage)
